@@ -1,0 +1,73 @@
+--This query calculates the total passes completed in a season by all players ordered by the most passes completed. 
+
+--select Name, Club, Passes_Attempted, Round((Passes_Attempted*(Pass_Completion_Percent/100)),0) as Passes_Completed
+--from dbo.EPL_Stats
+--order by Passes_Completed desc
+
+
+-- This query calculates all players average minutes per game played ordered by average minutes per game, then by matches played. 
+
+--select Name, Club, Position, Matches, Mins, (Mins/Matches) as Avg_Minutes_Per_Game
+--from dbo.EPL_Stats
+--order by Avg_Minutes_Per_Game desc, Matches desc
+
+
+-- This query calculates all players goal contributions throughout the season. 
+
+--select Name, Goals, Assists, (Goals+Assists) as Goal_Contributions
+--from dbo.EPL_Stats
+--order by Goal_Contributions desc
+
+
+-- This query calculates the average age, pass attempts, and pass percentage of a player in the Premier League.  
+
+--select AVG(age) as Avg_Age, AVG(Passes_Attempted) as Avg_Pass_Attempts, AVG(Pass_Completion_Percent) as Avg_Pass_Percentage
+--from dbo.EPL_Stats
+
+
+-- This query shows the top 10 goal scorers in the 2021 Premier League season. 
+
+--select Top 10 Goals as Goals_Scored, Name, Club 
+--from dbo.EPL_Stats
+--order by g=Goals_Scored desc
+
+
+-- This query shows the top 10 players with the most assists in the 2021 Premier League season. 
+
+--select Top 10 Assists as Total_Assists, Name, Club 
+--from dbo.EPL_Stats
+--order by Total_Assists desc
+
+
+-- This query calculates how many players are from a certain nationality and shows the total amount of players in the league. 
+
+--select Nationality, COUNT(Nationality) as Nation_Players, 
+--(Select COUNT(*) from dbo.EPL_Stats) as All_Players
+--from dbo.EPL_Stats
+--group by Nationality
+--order by Nation_players desc
+
+
+-- This query shows the total yellow and red cards accumulated by defenders. 
+
+--select Name, Club, Position, (Red_Cards+Yellow_Cards) as Total_Cards
+--from dbo.EPL_Stats
+--where Position = 'DF'
+--order by Total_Cards desc
+
+
+-- This query calculates the added up players xG and goals for each team. 
+
+--select Club, Round((Sum(xG)),2) as Total_xG, SUM(Goals) as Total_Goals
+--from dbo.EPL_Stats
+--group by Club
+--order by Total_xG desc
+
+
+-- This query calculates the percentage of English players on each team. 
+
+--select Club, COUNT(Nationality) as English_Players
+--from dbo.EPL_Stats
+--where Nationality = 'ENG'
+--group by Club
+--order by English_Players desc
